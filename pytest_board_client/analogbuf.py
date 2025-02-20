@@ -14,6 +14,9 @@ class AnalogBuffer(BlinkaConnection):
     def deinit(self):
         return super().deinit()
 
+    def _process(self, data):
+        pass
+
     def __del__(self):
         return super().__del__()
 
