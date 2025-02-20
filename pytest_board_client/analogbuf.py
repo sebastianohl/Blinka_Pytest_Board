@@ -18,4 +18,4 @@ class AnalogBuffer(BlinkaConnection):
         return super().__del__()
 
     def senf_buffer_to(self, buf):
-        self._send_packet({"buffer": buf})
+        self._send_packet({"type": "data", "value": buf})
