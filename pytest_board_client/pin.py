@@ -45,20 +45,20 @@ class Pin(BlinkaConnection):
     @property
     def value(self):
         # is pin a pull up and pin is LOW?
-        if self._pull == Pin.PULL_UP and self.current_value is False:
+        if self._pull == Pin.PULL_UP and self._current_value is False:
             self._current_value = False
         # is pin a pull down and pin is HIGH?
-        if self._pull == Pin.PULL_DOWN and self.current_value is True:
+        if self._pull == Pin.PULL_DOWN and self._current_value is True:
             self._current_value = False
         return self._current_value
 
     @value.setter
     def value(self, v):
         self._current_value = v
-        if self._pull == Pin.PULL_UP and self.current_value is False:
+        if self._pull == Pin.PULL_UP and self._current_value is False:
             self._current_value = False
         # is pin a pull down and pin is HIGH?
-        if self._pull == Pin.PULL_DOWN and self.current_value is True:
+        if self._pull == Pin.PULL_DOWN and self._current_value is True:
             self._current_value = False
 
         self._send_packet({"value": self._current_value})
